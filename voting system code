@@ -1,0 +1,137 @@
+//  VOTING SYSTEM
+#include<stdio.h>
+
+int main() {
+    int v1 = 0, v2 = 0, v3 = 0, v4 = 0, v5 = 0;
+    char name[50];
+    char g;  // Changed g[1] to g; you only need a single character
+    int age;
+    int vote, ch;
+
+    while (1) {
+        printf("**\t\t**\t\t**\t\t**\t\t**\t\t**\t\t**\t\t**\t\t**\t\t**\n");
+        printf("\t\t\t\t\tWE HEATLY WELCOME YOU SIR/MADAM !!\n");
+        printf("**\t\t**\t\t**\t\t**\t\t**\t\t**\t\t**\t\t**\t\t**\t\t**\n");
+        printf("\n");
+        printf("\n");
+
+        start:
+        printf("THEIR ARE CHOICES FOR YOUR CONVINIENCE-\n");
+
+        printf("PRESS 1 FOR VOTING \nPRESS 2 FOR RESULT \nPRESS 3 FOR EXIT \nENTER YOUR CHOICE: \n");
+        scanf("%d", &ch);
+
+        if (ch == 1) {
+            printf("PLEASE FILL THE FOLLOWING DETAILS FOR VOTING-\n");
+            printf("PLEASE ENTER YOUR NAME: \n");
+            scanf("%s", name);
+            
+            printf("ENTER YOUR GENDER(F/M): \n");
+            scanf(" %c", &g);
+
+            if (g != 'F' && g != 'M') {
+                scanf("INVALID GENDER");
+                goto start;
+            }
+            else{
+                printf("PLEASE ENTER YOUR AGE: \n");
+                scanf("%d", &age);
+    
+                if (age >= 18) {
+                    if (g == 'F') {
+                        printf("NAME : Miss %s\n", name);
+                    } else if (g == 'M') {
+                        printf("NAME : Mr %s\n", name);
+                    }
+                    printf("AGE : %d\n", age);
+                    printf("YOU ARE ALLOWED TO VOTE!\n");
+                    printf("THE PARTIES ARE AS FOLLOWS: \n");
+                    printf("1. BHARTIYA JANATA PARTY\n");
+                    printf("2. INDIAN NATIONAL CONGRESS\n");
+                    printf("3. COMMUNIST PARTY OF INDIA\n");
+                    printf("4. AAM AADMI PARTY\n");
+                    printf("5. BAHUJAN SAMAJ PARTY\n");
+                    printf("PLEASE ENTER RESPECTIVE PARTY NUMBER FOR VOTE:\n");
+                    scanf("%d", &vote);
+                    switch (vote) {
+                        case 1:
+                            v1++;
+                            printf("THANK YOU FOR YOUR VALUEABLE VOTE.\n");
+                            break;
+                        case 2:
+                            v2++;
+                            printf("THANK YOU FOR YOUR VALUEABLE VOTE.\n");
+                            break;
+                        case 3:
+                            v3++;
+                            printf("THANK YOU FOR YOUR VALUEABLE VOTE.\n");
+                            break;
+                        case 4:
+                            v4++;
+                            printf("THANK YOU FOR YOUR VALUEABLE VOTE.\n");
+                            break;
+                        case 5:
+                            v5++;
+                            break;
+                            default:
+                            printf("NO SUCH PARTY EXISTS.\n");
+                            break;
+                    }
+                }
+                else{
+                    scanf("YOU ARE NOT ALLOWED TO VOTE AS YOU ARE BELOW 18.");
+                }
+                goto start;
+            }
+        }
+
+        if (ch == 2) {
+            // Display results...
+            printf("TOTAL VOTE OF ALL PARTIES: \n");
+            printf("BHARTIYE JANTA PARTY: %d\n",v1);
+            printf("INDIAN NATIONAL CONGRESS: %d\n",v2);
+            printf("COMMUNIST PARTY OF INDIA: %d\n",v3);
+            printf("AAM AADMI PARTY: %d\n",v4);
+            printf("BAHUJAN SAMAJ PARTY: %d\n",v5);
+            if(((v1>v2) && (v1>v3)) && ((v1>v4) && (v1>v5)))
+            {
+                printf("BHARTIYE JANTA PARTY IS WINNER.\n");
+            }
+            else if(((v2>v1) && (v2>v3)) && ((v2>v4) && (v2>v5)))
+            {
+                printf("INDIAN NATIONAL CONGRESS IS WINNER.\n");
+            }
+            else if(((v3>v1) && (v3>v2)) && ((v3>v4) && (v3>v5)))
+            {
+                printf("COMMUNIST PARTY OF INDIA IS WINNER.\n");
+            }
+            else if(((v4>v1) && (v4>v2)) && ((v4>v3) && (v4>v5)))
+            {
+                printf("AAM AADMI PARTY IS WINNER.\n");
+            }
+            else if(((v5>v1) && (v5>v2)) && ((v5>v3) && (v5>v4)))
+            {
+                printf("BAHUJAN SAMAJ PARTY IS WINNER.\n");
+            }
+            else
+            {
+                printf("NO PARTY WINS.\n");
+            }
+            goto start;
+        }
+
+        if (ch == 3) {
+            printf("YOU EXIT SUCCESSFULLY.\n");
+            break;
+        } else {
+            printf("INAPPROPRIATE CHOICE2.\n");
+            goto start;
+        }
+    }
+    printf("THANK YOU!\n");
+    printf("HAVE A GREAT DAY.\n");
+    printf("*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*");
+
+    return 0;
+}
+
